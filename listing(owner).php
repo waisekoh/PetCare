@@ -8,10 +8,10 @@
 </head>
 
 <div class="topnav">
-                <a class="active" href="#home">Home</a> <!-- insert js -->
-                <a href="#news">Profile</a> <!-- insert js -->
-                <a href="#contact">Pets</a> <!-- insert js -->
-                <a href="#contact">History</a> <!-- insert js -->
+                <a href="login-ed_owner.php">Home</a> <!-- insert js -->
+                <a href="Profile.php">Profile</a> <!-- insert js -->
+                <a href="Pets.php">Pets</a> <!-- insert js -->
+                <a href="Ownerhistory.php">History</a> <!-- insert js -->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
                         <input name="submit2" type="submit" id="submit2" value="Log Out">
