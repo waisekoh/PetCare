@@ -20,7 +20,7 @@ $result = mysqli_query($con, $query);
                 <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
                 <a href="profileCT.php">Profile</a> <!-- add js-->
                 <a href="services.php">Services</a> <!-- add js-->
-                <a href="Caretakerhiistory.php">History</a> <!-- add js-->
+                <a href="Caretakerhistory.php">History</a> <!-- add js-->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
                         <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
@@ -67,7 +67,7 @@ $result = mysqli_query($con, $query);
 		<?php
 		}
 		else{
-			echo("You do not have any Pets Registered.");	
+			echo("You do not have any SERVICES Registered.");	
 			}
 		?>
 
