@@ -33,15 +33,17 @@ $result = mysqli_query($con, $query);
         <?php
 		if(mysqli_num_rows($result)>0){
 		?>
-		<table align="center" border="1px" style="width:600px; line-height:40px;">
+		<table align="center" border="1px" style="width:800px; line-height:40px;">
 			<tr>
-				<th colspan="6"><h2>Service</h2></th>
+				<th colspan="8"><h2>Service</h2></th>
 			</tr>
                 <th> Service ID: </th>
 				<th> Service Type: </th>
 				<th> Service Date: </th>
 				<th> Highest bidder: </th>
+                <th> Current bid: </th>
                 <th> Action: </th>
+                <th> Published: </th>
                 <th> Publish: </th>
 			
 			<?php
@@ -53,9 +55,15 @@ $result = mysqli_query($con, $query);
     			<th><?php echo $rows['stype']; ?></th>
 				<th><?php echo $rows['fromdate']; ?></th>
 				<th><a href ="petinfo.php"><?php echo $rows['pid']; ?></th>
+                <th><?php echo $rows['minbid']; ?></th>
                 <th>
                 <form class="accept-form" action="accept.php" method ="POST">
                 <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Accept</button></a>
+                </form> </th>
+                <th><?php echo $rows['availability']; ?></th>
+                <th>
+                <form class="accept-form" action="publish.php" method ="POST">
+                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Publish</button></a>
                 </form> </th>
 			
 			</tr>
