@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS CareTakerReviews;
 CREATE TABLE Users (
 	UserID INTEGER AUTO_INCREMENT,
 	display_name char(15) NOT NULL,
-	pwd char(15) NOT null,
+	password char(15) NOT null,
 	first_name char(45) NOT NULL,
    	last_name char(45) NOT NULL,
     email char(100) UNIQUE not null,
@@ -45,28 +45,28 @@ CREATE TABLE Pets(
 	FOREIGN KEY (oid) REFERENCES Owner(oid)
 );
 
-
 CREATE TABLE Service (
 	sid INTEGER AUTO_INCREMENT,
 	cid INTEGER,
 	stype text,
-	ptype text;
+	ptype text,
 	minbid INTEGER NOT NULL,
 	pid INTEGER,
 	fromdate TEXT, 
 	todate TEXT,
 	availability boolean, 
 	PRIMARY KEY (sid),
+    FOREIGN KEY (pid) REFERENCES Pets(pid),
 	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
 );
 
 CREATE TABLE History(
 	cid INTEGER,
 	sid INTEGER,
-	pid INTEGER,
-	FOREIGN KEY (pid) REFERENCES Service(pid),
+    pid INTEGER,
 	FOREIGN KEY (sid) REFERENCES Service(sid),
-	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
+	FOREIGN KEY (cid) REFERENCES service(cid),
+    FOREIGN KEY (pid) REFERENCES Service(pid)
 );
 Create Table CareTakerReviews(
     crid INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -85,5 +85,3 @@ create Table PetReview(
 	FOREIGN KEY (pid) REFERENCES Pets(pid),
 	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
 );
-
-
