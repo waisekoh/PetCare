@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS CareTakerReviews;
 CREATE TABLE Users (
 	UserID INTEGER AUTO_INCREMENT,
 	display_name char(15) NOT NULL,
-	password char(15) NOT null,
+	pwd char(15) NOT null,
 	first_name char(45) NOT NULL,
    	last_name char(45) NOT NULL,
     email char(100) UNIQUE not null,
@@ -53,12 +53,11 @@ CREATE TABLE Service (
 	ptype text;
 	minbid INTEGER NOT NULL,
 	pid INTEGER,
-	fromdate DATE, 
-	todate DATE NOT NULL,
-	last_update timestamp, #without time zone DEFAULT now() NOT NULL
+	fromdate TEXT, 
+	todate TEXT,
 	availability boolean, 
 	PRIMARY KEY (sid),
-	FOREIGN KEY (cid) REFERENCES caretaker(cid)
+	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
 );
 
 CREATE TABLE History(
