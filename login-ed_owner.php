@@ -10,7 +10,7 @@
 <div class="topnav">
                 <a class="active" href=login-ed_owner.php>Home</a> <!-- insert js -->
                 <a href=Profile.php>Profile</a> <!-- insert js -->
-                <a href=pets.php>Pet</a> <!-- insert js -->
+                <a href=Pets.php>Pet</a> <!-- insert js -->
                 <a href=Ownerhistory.php>History</a> <!-- insert js -->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
