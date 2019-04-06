@@ -1,4 +1,5 @@
-<?php
+<? php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +11,10 @@
     
     <body>
             <div class="topnav">
-                <a href="login-ed_owner.php">Home</a> <!-- add js-->
-                <a href="Profile.php">Profile</a> <!-- add js-->
-                <a href="Pets.php">Pets</a> <!-- add js-->
-                <a href="Ownerhistory.php">History</a> <!-- add js-->
+                <a class="active" href=login-ed_owner.php>Home</a> <!-- add js-->
+                <a href=Profile.php>Profile</a> <!-- add js-->
+                <a href=Pets.php>Pets</a> <!-- add js-->
+                <a href=Ownerhistory.php>History</a> <!-- add js-->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
                         <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
@@ -23,34 +24,37 @@
 
         <header>Add Pet</header>
         
-         <h1>
+        
             <div class="container">
-                <form role="form">
+			<h1>
+                <form role="form" action="addpet1.php" method="POST">
                     <!-- Text field -->
                     <div class =" form-group ">
-                        <label for=" inputPetName ">Pet Name</ label > <!-- add php-->
-                        <input type ="text" class =" form-control " id=" inputPetName ">
+                        <label for="inputPetName">Pet Name:</ label > <!-- add php-->
+                        <input type ="text" class ="form-control" id="inputPetName" name="petname">
                     </div >
-                    <div class =" form-group ">
-                        <label for=" inputBreedType ">Breed Type</ label > <!-- add php-->
-                        <input type ="text" class =" form-control " id=" inputBreedType ">
+                    <div class ="form-group">
+                        <label for=" inputBreedType ">Species of Pet:</ label > <!-- add php-->
+                        <input type ="text" class ="form-control" id="inputBreedType" name="species">
                     </div >
-                    <div class =" form-group ">
-                        <label for=" inputAge ">Age</ label > <!-- add php-->
+                    <!--
+					<div class =" form-group ">
+                        <label for=" inputAge ">Age</ label > 
                         <input type ="text" class =" form-control " id=" inputAge ">
                     </div >
                     <div class =" form-group ">
-                        <label for=" inputspecialReq ">Special Requirements</ label > <!-- add php-->
+                        <label for=" inputspecialReq ">Special Requirements</ label >
                         <input type ="text" class =" form-control " id=" inputspecialReq ">
-                    </div >
-                </form>
-            </div>
-        </h1>
+                    </div > -->
+                
+            
+			</h1>
         
         <h2>
-            <div class="clearfix">
+            
                 <button type="next" class="Addpetbtn">Add Pet</button> <!-- add js-->
-            </div>
-        </h2>
+        </h2>   
+			</div>
+			</form>
     </body>
 </html>
