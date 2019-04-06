@@ -10,10 +10,10 @@
     
     <body>
             <div class="topnav">
-                <a class="active" href="#home">Home</a> <!-- add js-->
-                <a href="#news">Profile</a> <!-- add js-->
-                <a href="#contact">Services</a> <!-- add js-->
-                <a href="#about">History</a> <!-- add js-->
+                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
+                <a href="ProfileCT.php">Profile</a> <!-- add js-->
+                <a href="Services.php">Services</a> <!-- add js-->
+                <a href="Caretakerhistory.php">History</a> <!-- add js-->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
                         <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
