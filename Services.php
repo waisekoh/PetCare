@@ -1,5 +1,12 @@
-<? php
+<?php
+session_start();
+include('db.php');
+$cid = $_SESSION['id'];
+//$ownerid = '1';
+$query = "SELECT * FROM Service WHERE cid = $cid";
+$result = mysqli_query($con, $query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -10,10 +17,10 @@
     
     <body>
             <div class="topnav">
-                <a class="active" href="#home">Home</a> <!-- add js-->
-                <a href="#news">Profile</a> <!-- add js-->
-                <a href="#contact">Services</a> <!-- add js-->
-                <a href="#about">History</a> <!-- add js-->
+                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
+                <a href="profileCT.php">Profile</a> <!-- add js-->
+                <a href="services.php">Services</a> <!-- add js-->
+                <a href="Caretakerhiistory.php">History</a> <!-- add js-->
                 <form align="right" name="form1" method="post" action="log_out.php">
                     <label class="logoutLblPos">
                         <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
@@ -22,30 +29,52 @@
         </div>
 
         <header>Services</header>
-        
-        <div class="container row">
-            <h2> Service Type: <!-- input php--> </h2>
-            <h2> Period: <!-- input php--> </h2>
-            <div class="clearfix">
-                <button type="next" class="Seemorebtn">See More</button> <!-- add js-->
-                <button type="next" class="Publishbtn">Publish</button> <!-- add js-->
-            </div>    
-        </div>
-        
         <p> </p>
-        
-        <div class="container row">
-            <h2> Service Type: <!-- input php--> </h2>
-            <h2> Period: <!-- input php--> </h2>
-            <div class="clearfix">
-                <button type="next" class="Seemorebtn">See More</button> <!-- add js-->
-                <button type="next" class="Publishbtn">Publish</button> <!-- add js-->
-            </div>    
-        </div>
+        <?php
+		if(mysqli_num_rows($result)>0){
+		?>
+		<table align="center" border="1px" style="width:600px; line-height:40px;">
+			<tr>
+				<th colspan="6"><h2>Service</h2></th>
+			</tr>
+                <th> Service ID: </th>
+				<th> Service Type: </th>
+				<th> Service Date: </th>
+				<th> Highest bidder: </th>
+                <th> Action: </th>
+                <th> Publish: </th>
+			
+			<?php
+				while($rows = mysqli_fetch_assoc($result))
+				{
+			?>
+			<tr>
+                <th><?php echo $rows['sid']; ?></th>
+    			<th><?php echo $rows['stype']; ?></th>
+				<th><?php echo $rows['fromdate']; ?></th>
+				<th><a href ="petinfo.php"><?php echo $rows['pid']; ?></th>
+                <th>
+                <form class="accept-form" action="accept.php" method ="POST">
+                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Accept</button></a>
+                </form> </th>
+			
+			</tr>
+			<?php
+				}
+				?>
+			</table>
+		</div>
+		<?php
+		}
+		else{
+			echo("You do not have any Pets Registered.");	
+			}
+		?>
+
         
         <h1>
             <div class="clearfix">
-                <button type="next" class="Addpetbtn">Add Service</button></div> <!-- add js-->
+            <a href="addservice.php"> <button type="next" class="addsvcbtn">Add service</button></a> 
         </h1>
         
     </body>

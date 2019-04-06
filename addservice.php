@@ -13,7 +13,7 @@ echo($_SESSION['id'])
     
     <body>
             <div class="topnav">
-                <a href="home_caretaker.php">Home</a> <!-- add js-->
+                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
                 <a href="profileCT.php">Profile</a> <!-- add js-->
                 <a href="services.php">Services</a> <!-- add js-->
                 <a href="Caretakerhiistory.php">History</a> <!-- add js-->

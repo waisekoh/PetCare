@@ -8,7 +8,7 @@
     $enddate =$_POST["enddate_in"];
 	$minbid =$_POST['Min_bid_in'];
     $servicetype= $_POST['stype_in'];
-    $sql = "INSERT INTO service (cid, ptype,stype,fromdate,todate,minbid)  VALUES ('$cid','$pettype', '$servicetype', '$startdate', '$enddate', '$minbid') ";
+    $sql = "INSERT INTO service (cid, ptype,stype,fromdate,todate,minbid, availability)  VALUES ('$cid','$pettype', '$servicetype', '$startdate', '$enddate', '$minbid', true ) ";
     if(!mysqli_query($con, $sql))
 		{
 			echo 'Not Inserted';
@@ -16,6 +16,7 @@
 	
 		else
 		{	
-			echo 'New Service Created';
+            echo 'New Service Created';
+            header('refresh:1; url=login-ed_caretaker.php');
         }
 ?>
