@@ -50,11 +50,6 @@ session_start();
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-20" data-validate="Type type">
-						<input class="input100" type="text" name="inputType" placeholder="Owner/CareTaker">
-						<span class="focus-input100"></span>
-					</div>
-                    
 					<div class="container-login100-form-btn"> 
                        <!-- <label class = "checkboxes"><INPUT TYPE="radio" Name="inputType" Value ="Owners"> Signed up as: </INPUT>
 						<input type="text" name="userrole" placeholder="'Owner' or 'Caretaker'"><br>

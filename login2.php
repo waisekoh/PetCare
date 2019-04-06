@@ -4,44 +4,34 @@
 	
 	$email =$_POST['inputEmail'];
 	$pwd =$_POST['inputPassword'];
-	$type= $_POST['inputType'];
-	
-	#$page ='';
-	$validUser = false;
-	$check = "SELECT email, password From users";
-	$checkres = mysqli_query($con, $check);
-	if(mysqli_num_rows($checkres)>0){
-		while($row = mysqli_fetch_assoc($checkres)){
-			if($row["email"]==$email && $row["password"] == $pwd){
-				$validUser = true;
-			}
-		}
-	}
-	;
-	if($validUser == false){
-		echo"<script>alert('Invalid Username or Password')</script>";
-		#echo 'invalid userpwd';
+	$sql = " SELECT * From Users WHERE email = '$email' AND password = '$pwd'";
+	$results = mysqli_query($con,$sql);
+	echo('hi');
+	if(!$row=mysqli_fetch_assoc($results)){
+		echo('hi');
+		$_SESSION["temp"]="error1";
 		header("refresh:1; url=login.php");
+		exit;
 	}
-	elseif($validUser){
-		if($type == "CareTaker"){
+	else{
+		$_SESSION['id']=$row['UserID'];
+		$_SESSION['email']=$row['email'];
+		$hi = $_SESSION['email'];
+		$check= "SELECT * FROM OWNER WHERE OID = '$hi'";
+		$checkRes = mysqli_query($con, $check);
+		if(!mysqli_num_rows($checkRes)>0){
+			$_SESSION['type']='Caretaker';
 			echo 'CareTaker Succesful Login';
 			header("refresh:1; url=login-ed_caretaker.php");
 		}
-		elseif($type =="Owner"){
-			echo 'Owner Succesful Login';
-			header("refresh:1; url=login-ed_owner.php");
-		}
 		else{
-			#echo"<script>alert('Invalid Type, Please enter either Owner or CareTaker only!')</scipt>";
-			#echo 'Invalid Type';
-			echo"<script>alert('Invalid Type, Enter Owner or CareTaker Only')</script>";
-			header("refresh:1; url=login.php");
+			$_SESSION['type']='Owner';
+			echo 'Owner Succesful Login';
+			header("refresh:10; url=login-ed_owner.php");
 		}
+
 	}
-	else{
-		echo"<script>alert('fuck')</script>";
-	}
+	
 ?>
 
 	

@@ -49,8 +49,10 @@ CREATE TABLE Pets(
 CREATE TABLE Service (
 	sid INTEGER AUTO_INCREMENT,
 	cid INTEGER,
+	stype text,
+	ptype text;
 	minbid INTEGER NOT NULL,
-	current_doggo INTEGER,
+	pid INTEGER,
 	fromdate DATE, 
 	todate DATE NOT NULL,
 	last_update timestamp, #without time zone DEFAULT now() NOT NULL
@@ -84,3 +86,5 @@ create Table PetReview(
 	FOREIGN KEY (pid) REFERENCES Pets(pid),
 	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
 );
+
+
