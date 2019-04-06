@@ -2,7 +2,7 @@
 
 	session_start();
 	include 'db.php';
-	
+
 	$email = $_POST['inputEmail'];
 	$user = $_POST['inputName'];
 	$pwd = $_POST['inputPassword'];
@@ -14,6 +14,8 @@
 	$address = $_POST['inputAddress'];
 	$country = $_POST['inputCountry'];
 	$age = $_POST['inputAge'];
+	
+	$_SESSION['email'] = $email;
 	
 	$page = "";
 	#$checkemail = mysqli_query($con, "SELECT email FROM users where email = $email");
