@@ -11,7 +11,6 @@ if($type=='Caretaker'){
 else{
 	$query = "SELECT * FROM service where oid = $cid";
 }
-
 $result = mysqli_query($con, $query);
 ?>
 
@@ -24,6 +23,7 @@ $result = mysqli_query($con, $query);
     </head>
     
     <body>
+	<center>
 
         <?php
 		if($type =='Caretaker'){
@@ -43,7 +43,15 @@ $result = mysqli_query($con, $query);
 				<th><?php echo $rows['pid']; ?></th></tr>
 				<?php }?>
 			<table>
-				<?php } else{ echo("You have no current available service"); }?>
+				<?php } else{ 
+				?><h2>
+				<?php
+				echo("You have no History! Start servicing now!"); }
+				?>
+				</h2>
+				<?php
+				
+				?>
 		
 		<?php
 			}
@@ -60,7 +68,6 @@ $result = mysqli_query($con, $query);
 					$sname = $rows['stype'];
 					$winbid = $rows['minbid'];
 				
-
 			?>
 			<tr>
 				<th><?php echo $sname; ?></th>
@@ -74,6 +81,6 @@ $result = mysqli_query($con, $query);
 		<?php
 		};
 	?>
-        
+    </center>    
     </body>
-</html>     
+</html> 
