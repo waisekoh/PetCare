@@ -54,7 +54,20 @@ $result = mysqli_query($con, $query);
                 <th><?php echo $rows['sid']; ?></th>
     			<th><?php echo $rows['stype']; ?></th>
 				<th><?php echo $rows['fromdate']; ?></th>
-				<th><a href ="petinfo.php"><?php echo $rows['pid']; ?></th>
+				<?php if($rows['pid'] == null){ 
+                ?>
+                <th><a>No bidder </a></th>
+                <?php
+                }
+                else{ ?>
+				    <th><form class="pet-form" action="petinfo.php" method ="POST">
+                    <button  name="pid_in" Value = <?php echo $rows['pid']; ?> style="border: none; background: none;"> <?php 
+                    $pid = $rows['pid'];
+                    $q= "SELECT pet_name FROM `pets` WHERE pid = $pid";
+                    $sql = mysqli_query($con,$q);
+                    echo(mysqli_fetch_assoc($sql)['pet_name']); ?> </button></a>
+                    </form> </th>
+                <?php } ?>
                 <th><?php echo $rows['minbid']; ?></th>
                 <th>
                 <form class="accept-form" action="accept.php" method ="POST">
