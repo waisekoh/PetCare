@@ -18,7 +18,6 @@ $result = mysqli_query($con, $query);
     <body>
 
 
-        <header>Pets</header>
         <?php
 		if(mysqli_num_rows($result)>0){
 		?>
@@ -37,8 +36,10 @@ $result = mysqli_query($con, $query);
 			?>
 			<tr>
 			
-				<th>
-					<a href=petinfo.php> <?php echo $rows['pid']; ?></a>		
+				<th><?php $pid = $rows['pid']; ?>
+				<form class="petinfo-form" action="Petinfo.php" method ="POST">
+				<button  name="pid_in" Value = <?php echo $pid; ?> style="border: none; background: none;">
+				</form>	<?php echo $pid; ?>
 				</th>
 				<th><?php echo $rows['pet_name']; ?></th>
 				<th><?php echo $rows['pet_type']; ?></th>
