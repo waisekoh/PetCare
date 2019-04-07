@@ -3,11 +3,11 @@
 	include 'db.php';
 	$current = $_SESSION['id'];
 	$petname = $_POST['petname'];
-	$type = $_POST['species'];
-
+	$type = $_POST['type'];
+	
 	$sql = "INSERT INTO pets (pet_name, pet_type, oid)
-					VALUES ( '$petname', '$type', '$current')";
-
+					VALUES ( '$petname', '$type', '$current')";	
+					
 	if(!mysqli_query($con, $sql)){
 		echo 'Not Inserted';
 		}
