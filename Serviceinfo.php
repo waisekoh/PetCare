@@ -1,4 +1,22 @@
-<? php
+<?php
+session_start();
+include('db.php');
+include('header.php');
+$current = $_SESSION['id'];
+$sid = $_POST['sid_in'];
+$_SESSION['sid']=$sid;
+$query = "SELECT * FROM Service WHERE sid = $sid";
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($result);
+$minbid = $row['minbid'];
+$service = $row['stype'];
+$ptype = $row['ptype'];
+$fromdate = $row['fromdate'];
+$todate = $row['todate'];
+$cid = $row['cid'];
+$q= "SELECT display_name FROM Users WHERE UserID = $cid";
+$sql = mysqli_query($con,$q);
+$ctname = mysqli_fetch_assoc($sql)['display_name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,33 +27,32 @@
     </head>
     
     <body>
-            <div class="topnav">
-                <a class="active" href="#home">Home</a> <!-- add js-->
-                <a href="#news">Profile</a> <!-- add js-->
-                <a href="#contact">Services</a> <!-- add js-->
-                <a href="#about">History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
 
         <header>Services</header>
         
         <div class="container row">
-            <h2> Service Type: <!-- input php--> </h2>
-            <h2> Period: <!-- input php--> </h2>
-            <h2> Pet Type Accepted: <!-- input php--> </h2>
+            <h2> Service Name: <?php echo($service) ?> <!-- input php--> </h2>
+            <h2> CareTaker Name: <?php echo($ctname) ?> <!-- input php--> </h2>
+            <h2> Period: <?php echo($fromdate) ?> to <?php echo($todate) ?> </h2>
+            <h2> Pet Type Accepted: <?php echo($ptype) ?></h2>
+            <h2> Current bid: <?php echo($minbid) ?></h2>
+            <?php if($row["cid"] == $current) { ?>
             <div class="clearfix">
                 <button type="next" class="Editbtn">Edit</button></div> <!-- add js-->
-        </div>
+            </div>
+            <?php } ?>
+            <?php if($_SESSION['type']=='Owner') { ?>
+                <form action="bid.php" method="POST">
+                <input type="text" name="bid" placeholder="your bid here">
+                <input type="text" name="pet_name" placeholder="pet which you wish to register for service">  
+                <button type="submit" name="submitsearch">Bid</button>
+                </form>
+            <?php } ?>
+            
+
         
         <p> </p>
-        
-        <div class="container row">
-            <h2> Reviews: <!-- input php--> </h2>
-        </div>
+
         
     </body>
 </html>

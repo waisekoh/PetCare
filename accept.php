@@ -11,8 +11,6 @@ if($ava == false){
     echo"This service is unpublished";
 }
 else{
-    $sql = "INSERT INTO history (cid,pid,sid) VALUES ('$cid', '$pid','$sid')";
-    $hihi = mysqli_query($con, $sql);
     $q= "UPDATE Service Set Availability = false where sid = $sid";
     $hi = mysqli_query($con,$q);
     header('refresh:1; url=home.php');

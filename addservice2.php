@@ -17,6 +17,6 @@
 		else
 		{	
             echo 'New Service Created';
-            header('refresh:1; url=login-ed_caretaker.php');
+            header('refresh:1; url=home.php');
         }
 ?>

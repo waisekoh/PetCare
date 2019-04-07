@@ -48,6 +48,7 @@ CREATE TABLE Pets(
 CREATE TABLE Service (
 	sid INTEGER AUTO_INCREMENT,
 	cid INTEGER,
+	oid INTEGER,
 	stype text,
 	ptype text,
 	minbid INTEGER NOT NULL,
@@ -59,6 +60,7 @@ CREATE TABLE Service (
 	PRIMARY KEY (sid),
     FOREIGN KEY (pid) REFERENCES Pets(pid),
 	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
+	FOREIGN KEY (oid) REFERENCES Owner(oid)
 );
 
 CREATE TABLE History(

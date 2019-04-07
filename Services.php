@@ -31,9 +31,8 @@ $result = mysqli_query($con, $query);
 				<th> Highest bidder: </th>
                 <th> Current bid: </th>
                 <th> Action: </th>
-                <th> Published: </th>
-                <th> Publish: </th>
-                <th> Completed: </th>
+                <th> Status: </th>
+                <th> Completed? </th>
 			
 			<?php
 				while($rows = mysqli_fetch_assoc($result))
@@ -62,14 +61,10 @@ $result = mysqli_query($con, $query);
                 <form class="accept-form" action="accept.php" method ="POST">
                 <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Accept</button></a>
                 </form> </th>
-                <th><?php echo $rows['availability']; ?></th>
-                <th>
-                <form class="accept-form" action="publish.php" method ="POST">
-                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Publish</button></a>
-                </form> </th>
+                <th><?php if($rows['availability'] == 1){echo 'ongoing';}else{echo 'accepted';}; ?></th>
                 <th>
                 <form class="complete-form" action="complete.php" method ="POST">
-                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Complete</button></a>
+                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Complete </button></a>
                 </form> </th>
                     
 			</tr>
