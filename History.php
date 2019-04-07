@@ -25,10 +25,10 @@ $result = mysqli_query($con, $query);
     <body>
 	<center>
 
-        <?php
+			<?php
 		if($type =='Caretaker'){
 			if(mysqli_num_rows($result)>0){	
-		?>
+			?>
 			<table align="center" border="1px" style="width:800px; line-height:40px;">
 				<tr>
 					<th colspan="8"><h2>HISTORY</h2></th>
@@ -53,34 +53,42 @@ $result = mysqli_query($con, $query);
 				
 				?>
 		
-		<?php
-			}
-		else{ ?>
-			<table align="center" border="1px" style="width:800px; line-height:40px;">
-			<tr>
-				<th colspan="8"><h2>HISTORY</h2></th>
-			</tr>
-				<th> Service Name </th>
-				<th> Your winning bid</th>			
 			<?php
-				while($rows = mysqli_fetch_assoc($result))
-				{
+		}
+		else{
+			if(mysqli_num_rows($result)>0){
+				?>
+				<table align="center" border="1px" style="width:800px; line-height:40px;">
+				<tr>
+					<th colspan="8"><h2>HISTORY</h2></th>
+				</tr>
+					<th> Service Name </th>
+					<th> Your winning bid</th>			
+				<?php
+				while($rows = mysqli_fetch_assoc($result)){
 					$sname = $rows['stype'];
 					$winbid = $rows['minbid'];
-				
-			?>
-			<tr>
-				<th><?php echo $sname; ?></th>
-				<th><?php echo $winbid; ?></th>
-		
-			</tr>
-			<?php
+				?>
+				<tr>
+					<th><?php echo $sname; ?></th>
+					<th><?php echo $winbid; ?></th>
+				</tr>
+				<?php
 				}
 				?>
-		<table>
-		<?php
-		};
-	?>
+				</table>
+				<?php
+			}
+			else{ 
+				?>
+				<h2>
+				<?php
+				echo("You have no History.");
+				?>
+				</h2>
+			<?php }
+		}
+			?>
     </center>    
     </body>
 </html> 

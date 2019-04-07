@@ -10,7 +10,6 @@ $result = mysqli_query($con, $query);
 $result6 = mysqli_query($con, $q6);
 $q2 = "SELECT * FROM SERVICE";
 $reco = mysqli_query($con,$q2);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +19,8 @@ $reco = mysqli_query($con,$q2);
 </head>
   
 <div class="split left"> 
-<center><div class ="txt"><p><h3> Listing</h3></p></div></center>
-<?php if(mysqli_num_rows($reco) == 0){ ?> <a> No Current Listing </a>
+<center><div class ="txt"><p><h3> Active Services Available</h3></p></div>
+<?php if(mysqli_num_rows($reco) == 0){ ?> <a> No Current Listing </a></center>
   <div class="centered">
   <?php } else{ 
     while($recorow = mysqli_fetch_assoc($reco))
@@ -43,17 +42,17 @@ $reco = mysqli_query($con,$q2);
               $dname = mysqli_fetch_assoc($sql)['display_name'];?>
               
               <form class="owner-form" action="Serviceinfo.php" method ="POST"> <button  name="sid_in" Value = <?php echo $sid; ?> style="border: none; background: none;">
-              <h2><?php echo($stype) ?></h2> 
+              <h2><?php echo($stype) ?><a> Service</a></h2> 
               </form>              
              
-              <a>Provider name : </a><?php echo($dname);?>
+              <a>Care Taker's Name : </a><?php echo($dname);?>
       
             
              <p>
-             <a> Animal type: </a> <?php echo($animal_type);?>
+             <a> Animal Type: </a> <?php echo($animal_type);?>
              </p>
              <p>
-             <a> Current minbid: </a> <?php echo($curr_bid); ?>
+             <a> Current Bid: </a> <?php echo($curr_bid); ?>
               </p>
             </h2>
     </div>
@@ -65,9 +64,9 @@ $reco = mysqli_query($con,$q2);
 
 <div class="split right">
 <?php  if($_SESSION['type']=='Caretaker'){ ?>
-<center><div class ="txt"><p>Published Services</p></div></center>
+<center><div class ="txt"><p><h3>Active Services</h3></p></div>
   <?php
-    if(mysqli_num_rows($result) == 0){ ?> <a> No Current services </a>
+    if(mysqli_num_rows($result) == 0){ ?> <a> You have no active Services. </a></center>
     <?php } else{ 
         while($rows = mysqli_fetch_assoc($result))
         {
@@ -87,9 +86,9 @@ $reco = mysqli_query($con,$q2);
                 } }}
 else{	
     		?>
-<center><div class ="txt"><p>Current Bids</p></div></center>
+<center><div class ="txt"><p><h3>Current Bids</h3></p></div>
     <?php
-    if(mysqli_num_rows($result6) == 0){ ?> <a> Have not bid for any servives </a>
+    if(mysqli_num_rows($result6) == 0){ ?> <a> Have not bid for any Services </a></center>
     <?php } else{ 
         while($rows = mysqli_fetch_assoc($result6))
         {
@@ -101,9 +100,9 @@ else{
         else{
           $status = "ongoing";
         } ?>
-        <h2>Service name : <?php echo $rows['stype'] ?></h2>
-        <h3>Your bid : <?php echo $rows['minbid'] ?></h3>
-        <h3>Status : <?php echo $status?></h3>
+        <h2>Service Name: <?php echo $rows['stype'] ?></h2>
+        <h3>Your Bid: <?php echo $rows['minbid'] ?></h3>
+        <h3>Status: <?php echo $status?></h3>
 
         </div>
 

@@ -53,14 +53,20 @@ $result = mysqli_query($con, $query);
 			<div class="clearfix">
                 <button type="next" class="Seemorebtn">See More</button></div>
 			-->
+		<p></p>
 		<?php
 		}
 		else{
-			echo("You do not have any Pets Registered.");	
+			?>
+			<h2><center>
+			<?php echo("You do not have any Pets Registered");	?>
+			</center></h2>
+			<?php
 			}
+			
 		?>
-
         <p> </p>
+		
             
         <h1>
             <div align="center" class="clearfix">
@@ -70,4 +76,3 @@ $result = mysqli_query($con, $query);
         
     </body>
 </html>
-        

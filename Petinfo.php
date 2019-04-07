@@ -18,14 +18,14 @@ $type =$row["pet_type"];
 <html lang="en">
     
     <head>
-        <title> Pets </title>
+        <title> Pet Information </title>
         <link rel="stylesheet" type="text/css" href="css/petinfo.css">
     </head>
     
     <body>
 
 
-        <header>Pets</header>
+        <header>Pet Information</header>
         
         <div class="container row">
             <h2> Pet ID: <?php echo $pid; ?> </h2>
@@ -36,7 +36,7 @@ $type =$row["pet_type"];
                     $q= "SELECT display_name FROM Users WHERE UserID = $powner";
                     $sql = mysqli_query($con,$q);
                     echo(mysqli_fetch_assoc($sql)['display_name']); ?> </button></a>
-                    </form> <h2>
+                    </form> </h2>
             <h2> Special Requirements: <!-- input php--> </h2>
             <?php if($powner == $current) { ?>
             <div class="clearfix">
