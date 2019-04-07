@@ -7,7 +7,6 @@ $cid = $_SESSION['id'];
 $query = "SELECT * FROM Service WHERE cid = $cid";
 $result = mysqli_query($con, $query);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     
@@ -16,7 +15,8 @@ $result = mysqli_query($con, $query);
         <link rel="stylesheet" type="text/css" href="css/services.css">
     </head>
     
-    <body
+    <body>
+	<center>
         <p> </p>
         <?php
 		if(mysqli_num_rows($result)>0){
@@ -39,7 +39,10 @@ $result = mysqli_query($con, $query);
 				{
 			?>
 			<tr>
-                <th><?php echo $rows['sid']; ?></th>
+				<th><?php $sid = $rows['sid']; ?>
+				<form class="petinfo-form" action="Serviceinfo.php" method ="POST">
+				<button  name="sid_in" Value = <?php echo $sid; ?> style="border: none; background: none;">
+				</form><?php echo $rows['sid']; ?></th>
     			<th><?php echo $rows['stype']; ?></th>
 				<th><?php echo $rows['fromdate']; ?></th>
 				<?php if($rows['pid'] == null){ 
@@ -48,8 +51,8 @@ $result = mysqli_query($con, $query);
                 <?php
                 }
                 else{ ?>
-				    <th><form class="pet-form" action="petinfo.php" method ="POST">
-                    <button  name="pid_in" Value = <?php echo $rows['pid']; ?> style="border: none; background: none;"> <?php 
+				    <th><form class="pet-form" action="serviceinfo.php" method ="POST">
+                    <button  name="sid_in" Value = <?php echo $rows['pid']; ?> style="border: none; background: none;"> <?php 
                     $pid = $rows['pid'];
                     $q= "SELECT pet_name FROM `pets` WHERE pid = $pid";
                     $sql = mysqli_query($con,$q);
@@ -76,15 +79,14 @@ $result = mysqli_query($con, $query);
 		<?php
 		}
 		else{
-			echo("You do not have any SERVICES Registered.");	
-			}
+			?> <h2><a> You do not have any Services Registered </a></h2>	
+		<?php	}
 		?>
-
-        
+		<p></p>
         <h1>
-            <div class="clearfix">
-            <a href="addservice.php"> <button type="next" class="addsvcbtn">Add service</button></a> 
+            <div align="center" class="clearfix">
+            <a href="addservice.php"> <button type="next" class="addsvcbtn">Add Service</button></a> 
         </h1>
-        
+     </center>
     </body>
 </html>
