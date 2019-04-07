@@ -8,7 +8,7 @@ include('db.php');
 		<a style="float:left" href="home.php">Home</a> 
 		
 		<!--My Profile Button-->
-		<a style="float:left" href="ProfileCT.php">Profile</a> 
+		<a style="float:left" href="myprofile.php">Profile</a> 
 		
 		<!-- Either Services or Pets Button-->
 		<?php if($_SESSION['type'] == "Caretaker"){ ?>
