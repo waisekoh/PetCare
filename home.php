@@ -45,10 +45,9 @@ $reco = mysqli_query($con,$q2);
               <form class="owner-form" action="Serviceinfo.php" method ="POST"> <button  name="sid_in" Value = <?php echo $sid; ?> style="border: none; background: none;">
               <h2><?php echo($stype) ?></h2> 
               </form>              
-              <form class="owner-form" action="profileothers.php" method ="POST">
-              <button  name="oid_in" Value = <?php echo $ctid; ?> style="border: none; background: none;">
+             
               <a>Provider name : </a><?php echo($dname);?>
-              </form>
+      
             
              <p>
              <a> Animal type: </a> <?php echo($animal_type);?>
