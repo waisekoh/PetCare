@@ -15,10 +15,29 @@
 	<?php
 		if(isset($_POST['submitsearch'])){
 			$search = mysqli_real_escape_string($con, $_POST['search']);
-			$sql = "SELECT * FROM service WHERE stype LIKE '%$search%' 
-					OR ptype LIKE '%$search%'
-					OR fromdate LIKE '%$search%'
-					OR todate LIKE '%$search%'";
+			$sql = 
+					
+					"SELECT service.sid, service.cid, service.stype, service.ptype, service.minbid, service.fromdate, service.todate, users.display_name 
+					FROM service LEFT JOIN users ON service.cid = users.UserID 
+					WHERE stype LIKE '%$search%' 
+					OR ptype LIKE '%$search%' 
+					OR fromdate LIKE '%$search%' 
+					OR todate LIKE '%$search%' 
+					OR display_name LIKE '%$search%' 
+					UNION 
+					SELECT service.sid, service.cid, service.stype, service.ptype, service.minbid, service.fromdate, service.todate, users.display_name 
+					FROM service RIGHT JOIN users ON service.cid = users.UserID 
+					WHERE stype LIKE '%$search%' 
+					OR ptype LIKE '%$search%' 
+					OR fromdate LIKE '%$search%' 
+					OR todate LIKE '%$search%' 
+					OR display_name LIKE '%$search%'
+					";
+					
+					
+					
+					
+					
 			$result = mysqli_query($con, $sql);
 			$queryResult = mysqli_num_rows($result);
 			
@@ -34,6 +53,9 @@
 						<h2><?php echo $row['stype']; ?> <a> Service </a> </h2>
 					</form>
 						</h2>
+						<p>
+						<a> Care Taker: </a> <?php echo $row['display_name'];?>
+						</p>
 						<p>
 							<a> Animal type: </a> <?php echo $row['ptype'];?>
 						</p>
