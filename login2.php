@@ -22,12 +22,12 @@
 		if(mysqli_num_rows($r) > 0 ){
 			$_SESSION['type']='Owner';
 			echo 'Owner Succesful Login';
-			header("refresh:1; url=login-ed_owner.php");
+			header("refresh:1; url=home.php");
 		}
 		else{
 			$_SESSION['type']='Caretaker';
 			echo 'CareTaker Succesful Login';
-			header("refresh:1; url=login-ed_caretaker.php");
+			header("refresh:1; url=home.php");
 
 		}
 

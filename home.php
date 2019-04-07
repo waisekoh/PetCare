@@ -1,10 +1,11 @@
+
 <?php
 session_start();
 include('db.php');
+include('header.php');
 $cid = $_SESSION['id'];
 $query = "SELECT * FROM Service WHERE cid = $cid and availability = true";
 $result = mysqli_query($con, $query);
-
 $q2 = "SELECT * FROM SERVICE";
 $reco = mysqli_query($con,$q2);
 
@@ -15,22 +16,7 @@ $reco = mysqli_query($con,$q2);
     <title>Welcome to PAWsome Boarding</title>  
     <link rel="stylesheet" type="text/css" href="css/login-ed.css">
 </head>
-
-<div class="topnav">
-  <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
-  <a href="ProfileCT.php">Profile</a> <!-- add js-->
-  <?php if($_SESSION['type'] == "Caretaker") { ?>
-  <a href="Services.php">Services</a> <!-- add js-->
-  <?php } else {?> <a href="Petinfo.php">Pets</a> <?php } ?>
-  <a href="Caretakerhistory.php">History</a> <!-- add js-->
-  <form align="right" name="form1" method="post" action="log_out.php">
-  <label class="logoutLblPos">
-  <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-    </label>
-    </form>
-   </div> 
-    
-<!--INPUT: profile pictures, names, event titles, descrptions and status to be drawn from SQL-->  
+  
 <div class="split left"> 
 <center><div class ="txt"><p><h3> Listing</h3></p></div></center>
 <?php if(mysqli_num_rows($reco) == 0){ ?> <a> No Current Listing </a>

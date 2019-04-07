@@ -55,6 +55,7 @@ CREATE TABLE Service (
 	fromdate TEXT, 
 	todate TEXT,
 	availability boolean, 
+	completed boolean,
 	PRIMARY KEY (sid),
     FOREIGN KEY (pid) REFERENCES Pets(pid),
 	FOREIGN KEY (cid) REFERENCES CareTaker(cid)

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('db.php');
+include('header.php');
 $ownerid = $_SESSION['id'];
 #$ownerid = '1';
 $query = "SELECT * FROM pets WHERE oid = $ownerid";
@@ -15,17 +16,7 @@ $result = mysqli_query($con, $query);
     </head>
     
     <body>
-            <div class="topnav">
-                <a href=login-ed_owner.php>Home</a> <!-- add js-->
-                <a href=Profile.php>Profile</a> <!-- add js-->
-                <a class="active" href=Pets.php>Pets</a> <!-- add js-->
-                <a href=Ownerhistory.php>History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
+
 
         <header>Pets</header>
         <?php

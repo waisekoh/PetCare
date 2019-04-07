@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('db.php');
+include('header.php');   
 $cid = $_SESSION['id'];
 //$ownerid = '1';
 $query = "SELECT * FROM Service WHERE cid = $cid";
@@ -15,27 +16,14 @@ $result = mysqli_query($con, $query);
         <link rel="stylesheet" type="text/css" href="css/services.css">
     </head>
     
-    <body>
-            <div class="topnav">
-                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
-                <a href="profileCT.php">Profile</a> <!-- add js-->
-                <a href="services.php">Services</a> <!-- add js-->
-                <a href="Caretakerhistory.php">History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
-
-        <header>Services</header>
+    <body
         <p> </p>
         <?php
 		if(mysqli_num_rows($result)>0){
 		?>
 		<table align="center" border="1px" style="width:800px; line-height:40px;">
 			<tr>
-				<th colspan="8"><h2>Service</h2></th>
+				<th colspan="9"><h2>Service</h2></th>
 			</tr>
                 <th> Service ID: </th>
 				<th> Service Type: </th>
@@ -45,6 +33,7 @@ $result = mysqli_query($con, $query);
                 <th> Action: </th>
                 <th> Published: </th>
                 <th> Publish: </th>
+                <th> Completed: </th>
 			
 			<?php
 				while($rows = mysqli_fetch_assoc($result))
@@ -78,7 +67,11 @@ $result = mysqli_query($con, $query);
                 <form class="accept-form" action="publish.php" method ="POST">
                 <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Publish</button></a>
                 </form> </th>
-			
+                <th>
+                <form class="complete-form" action="complete.php" method ="POST">
+                <button type="next" class="addsvcbtn" name="sid_in" Value = <?php echo $rows['sid']; ?> >Complete</button></a>
+                </form> </th>
+                    
 			</tr>
 			<?php
 				}

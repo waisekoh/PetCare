@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('db.php');
+include('header.php');
 $cid = $_SESSION['id'];
 //$ownerid = '1';
 $query = "SELECT * FROM History WHERE cid = $cid";
@@ -16,19 +17,7 @@ $result = mysqli_query($con, $query);
     </head>
     
     <body>
-            <div class="topnav">
-                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
-                <a href="ProfileCT.php">Profile</a> <!-- add js-->
-                <a href="Services.php">Services</a> <!-- add js-->
-                <a class="active" href="Caretakerhistory.php">History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
 
-        <header>History</header>
         <?php
 		if(mysqli_num_rows($result)>0){
 		?>
@@ -44,7 +33,7 @@ $result = mysqli_query($con, $query);
                     $sid = $rows['sid'];
                     $pid = $rows['pid'];
                     $q = "SELECT pet_name From pets where pid = $pid";
-                    
+
 			?>
 			<tr>
                 <th><?php echo $rows['sid']; ?></th>

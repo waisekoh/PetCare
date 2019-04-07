@@ -1,6 +1,8 @@
 <?php
 session_start();
 include('db.php');
+include('header.php');
+$current = $_SESSION['id'];
 $pid = $_POST['pid_in'];
 $query = "SELECT * FROM Pets WHERE pid = $pid";
 $result = mysqli_query($con, $query);
@@ -21,19 +23,7 @@ $type =$row["pet_type"];
     </head>
     
     <body>
-            <div class="topnav">
-                <a href="login-ed_caretaker.php">Home</a> <!-- add js-->
-                <a href="ProfileCT.php">Profile</a> <!-- add js-->
-                <?php if($_SESSION['type'] == "Caretaker") { ?>
-                <a class="active" href="Services.php">Services</a> <!-- add js-->
-                <?php } else {?> <a class="active" href="Petinfo.php">Pets</a> <?php } ?>
-                <a href="Caretakerhistory.php">History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
+
 
         <header>Pets</header>
         
@@ -48,11 +38,12 @@ $type =$row["pet_type"];
                     echo(mysqli_fetch_assoc($sql)['display_name']); ?> </button></a>
                     </form> <h2>
             <h2> Special Requirements: <!-- input php--> </h2>
-            <?php if($powner == $_SESSION['id']) { ?>
+            <?php if($powner == $current) { ?>
             <div class="clearfix">
                 <button type="next" class="Editbtn">Edit</button></div> <!-- add js-->
             </div>
             <?php } ?>
+
         
         <p> </p>
         

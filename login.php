@@ -66,7 +66,7 @@ session_start();
 					</div> <!-- insert js -->
 				</form>
 
-				<div class="login100-more" style="background-image: url(mages/happy-dog-owner.jpg');"></div>
+				<div class="login100-more" style="background-image: url(images/happy-dog-owner.jpg);"></div>
 			</div>
 		</div>
 	</div>
