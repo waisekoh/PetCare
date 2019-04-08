@@ -25,8 +25,8 @@ $rows = mysqli_fetch_assoc($result)
             <h2> Age: <?php echo $rows['age']; ?> </h2>
         
             <div class="clearfix">
-                <button type="next" class="Updatebtn">Update Profile</button> <!-- add js-->
-                <button type="next" class="Updatebtn">Update Password</button> <!-- add js-->
+				<a href=Updateprofile.php><button type="next" class="Addpetbtn">Update Profile</button></a>
+				<a href=Updatepassword.php><button type="next" class="Addpetbtn">Change Password</button></a>
             </div>
         </center>
     </body>
