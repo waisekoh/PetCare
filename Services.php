@@ -51,8 +51,8 @@ $result = mysqli_query($con, $query);
                 <?php
                 }
                 else{ ?>
-				    <th><form class="pet-form" action="serviceinfo.php" method ="POST">
-                    <button  name="sid_in" Value = <?php echo $rows['pid']; ?> style="border: none; background: none;"> <?php 
+				    <th><form class="pet-form" action="petinfo.php" method ="POST">
+                    <button  name="pid_in" Value = <?php echo $rows['pid']; ?> style="border: none; background: none;"> <?php 
                     $pid = $rows['pid'];
                     $q= "SELECT pet_name FROM `pets` WHERE pid = $pid";
                     $sql = mysqli_query($con,$q);

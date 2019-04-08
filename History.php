@@ -33,14 +33,20 @@ $result = mysqli_query($con, $query);
 				<tr>
 					<th colspan="8"><h2>HISTORY</h2></th>
 				</tr>
-                	<th> Service ID: </th>
-					<th> PET ID</th>			
+                	<th> Service Name: </th>
+					<th> PET Name</th>			
 				<?php while($rows = mysqli_fetch_assoc($result)) {
                 		$sid = $rows['sid'];
                     	$pid = $rows['pid'];
-                    	$q = "SELECT pet_name From pets where pid = $pid";?>
-				<tr><th><?php echo $rows['sid']; ?></th> 
-				<th><?php echo $rows['pid']; ?></th></tr>
+						$sname = $rows['name'];
+                    	$q = "SELECT pet_name From pets where pid = $pid";
+						$iwantname = mysqli_query($con, $q);
+						$gimmename = mysqli_fetch_assoc($iwantname);?>
+				<tr><th><?php echo $sname; ?></th> 
+									<th><form class="review-form" action="leavereview.php" method ="POST">	
+					<button  name="reviewee" Value = <?php echo $pid; ?> style="border: none; background: none;">
+				<h4><?php echo $gimmename['pet_name']; ?></h4></button></form></th>
+				</tr>
 				<?php }?>
 			<table>
 				<?php } else{ 
@@ -68,9 +74,12 @@ $result = mysqli_query($con, $query);
 				while($rows = mysqli_fetch_assoc($result)){
 					$sname = $rows['stype'];
 					$winbid = $rows['minbid'];
+					$providerid = $rows['cid'];
 				?>
 				<tr>
-					<th><?php echo $sname; ?></th>
+					<th><form class="review-form" action="leavereview.php" method ="POST">	
+					<button  name="reviewee" Value = <?php echo $providerid; ?> style="border: none; background: none;">
+					<h4><?php echo $sname; ?></h4></button></form></th>
 					<th><?php echo $winbid; ?></th>
 				</tr>
 				<?php

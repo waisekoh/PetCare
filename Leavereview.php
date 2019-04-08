@@ -1,4 +1,11 @@
-<? php
+
+<?php
+session_start();
+include('db.php');
+include('header.php');   
+$current= $_SESSION['id'];
+$session_type=$_SESSION['type'];
+$reviewee = $_POST['reviewee'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,17 +16,6 @@
     </head>
     
     <body>
-            <div class="topnav">
-                <a href="login-ed_owner.php">Home</a> <!-- add js-->
-                <a href="Profile.php">Profile</a> <!-- add js-->
-                <a href="Pets.php">Pets</a> <!-- add js-->
-                <a href="Ownerhistory.php">History</a> <!-- add js-->
-                <form align="right" name="form1" method="post" action="log_out.php">
-                    <label class="logoutLblPos">
-                        <input name="submit2" type="submit" id="submit2" value="Log Out"> <!-- add js-->
-                    </label>
-                </form>
-        </div>
 
         <header>Leave A Review</header>
         
@@ -29,28 +25,15 @@
                     <label for="review">Review</label> <!-- add php-->
                 </div>
                 <div class="col-75">
+					<form class="pet-form" action="write_review.php" method ="POST">
                     <textarea id="review" name="review" placeholder="Write something.." style="height:200px"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="review">Rate</label> <!-- add php-->
-                </div>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <div class="rate-container">
-                    <i class="fa fa-star "></i>
-                    <i class="fa fa-star "></i>
-                    <i class="fa fa-star "></i>
-                    <i class="fa fa-star "></i>
-                    <i class="fa fa-star "></i>
-                </div>
-            </div>
-        </h1>
-        
-        <h2>
-            <div class="clearfix">
-                <button type="next" class="Submitbtn">Submit</button> <!-- add js-->
-            </div>
+                	<div class="clearfix">
+						<button type="sumbit" name="reviewee" value = <?php echo($reviewee) ?> class="Submitbtn">Submit</button> <!-- add js-->
+					</div>
+					</form>
+				</div>
+			</div>
+			
         </h2>
     </body>
 </html>

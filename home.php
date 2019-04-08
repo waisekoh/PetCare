@@ -8,7 +8,7 @@ $query = "SELECT * FROM Service WHERE cid = $cid and availability = true";
 $q6 = "SELECT * FROM Service WHERE oid = $cid and completed = false";
 $result = mysqli_query($con, $query);
 $result6 = mysqli_query($con, $q6);
-$q2 = "SELECT * FROM SERVICE";
+$q2 = "SELECT * FROM SERVICE where availability = true";
 $reco = mysqli_query($con,$q2);
 ?>
 <!DOCTYPE html>

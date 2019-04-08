@@ -1,13 +1,4 @@
 
-DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Owner;
-DROP TABLE IF EXISTS CareTaker;
-DROP TABLE IF EXISTS Pets;
-DROP TABLE IF EXISTS Service;
-DROP TABLE IF EXISTS History;
-DROP TABLE IF EXISTS PetReview;
-DROP TABLE IF EXISTS CareTakerReviews;
-
 CREATE TABLE Users (
 	UserID INTEGER AUTO_INCREMENT,
 	display_name char(15) NOT NULL,
@@ -67,6 +58,7 @@ CREATE TABLE History(
 	cid INTEGER,
 	sid INTEGER,
     pid INTEGER,
+	name text, 
 	FOREIGN KEY (sid) REFERENCES Service(sid),
 	FOREIGN KEY (cid) REFERENCES service(cid),
     FOREIGN KEY (pid) REFERENCES Service(pid)
