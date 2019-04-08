@@ -34,6 +34,16 @@ $country = $rows['country']
 
         <div>
         <center>
+		<div class="container row">
+			<h1> Reviews: </h1>
+			<?php
+			$pq = "SELECT * from caretakerreviews where cid = $oid";
+			$pqcont = mysqli_query($con,$pq);
+			while($prow = mysqli_fetch_assoc($pqcont)){ ?>
+				
+				<h3> <?php echo($prow['review']) ?></h3>
+			<?php } ?>
+        </div>
         </center>
         </div>
     </body>

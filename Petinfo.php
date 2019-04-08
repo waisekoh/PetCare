@@ -48,7 +48,13 @@ $type =$row["pet_type"];
         <p> </p>
         
         <div class="container row">
-            <h2> Reviews: <!-- input php--> </h2>
+			<h1> Reviews: </h1>
+			<?php
+			$pq = "SELECT review from petreview where pid = $pid";
+			$pqcont = mysqli_query($con,$pq);
+			while($prow = mysqli_fetch_assoc($pqcont)){ ?>
+				<h3> <?php echo($prow['review']) ?></h3>
+			<?php } ?>
         </div>
         
     </body>
