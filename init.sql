@@ -1,14 +1,22 @@
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Owner;
+DROP TABLE IF EXISTS CareTaker;
+DROP TABLE IF EXISTS Pets;
+DROP TABLE IF EXISTS Service;
+DROP TABLE IF EXISTS History;
+DROP TABLE IF EXISTS PetReview;
+DROP TABLE IF EXISTS CareTakerReviews;
 
 CREATE TABLE Users (
 	UserID INTEGER AUTO_INCREMENT,
 	display_name char(15) NOT NULL,
-	password char(15) NOT null,
+	password char(100) NOT null,
 	first_name char(45) NOT NULL,
    	last_name char(45) NOT NULL,
     email char(100) UNIQUE not null,
 	gENDer char(1),
 	phone_number INTEGER UNIQUE not null,
-    address INTEGER NOT NULL,
+    address char(100) NOT NULL,
 	country char(100),
 	age INTEGER,
 	PRIMARY KEY(UserID)
@@ -50,7 +58,7 @@ CREATE TABLE Service (
 	completed boolean,
 	PRIMARY KEY (sid),
     FOREIGN KEY (pid) REFERENCES Pets(pid),
-	FOREIGN KEY (cid) REFERENCES CareTaker(cid)
+	FOREIGN KEY (cid) REFERENCES CareTaker(cid),
 	FOREIGN KEY (oid) REFERENCES Owner(oid)
 );
 
